@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- MENU (globale) -->
   <div class="menu-overlay" id="menuOverlay">
     <div class="menu-panel" data-panel="true">
       <nav class="menu-links">
@@ -21,7 +20,7 @@
 
   <div class="snap">
 
-    <!-- ========== HOME ========== -->
+    <!-- HOME -->
     <section class="section" id="home">
       <header class="header">
         <div class="header-inner">
@@ -31,7 +30,6 @@
             </svg>
           </button>
 
-          <!-- come nel mock: In / programmazione -->
           <div class="title">
             <div class="t1">In<br>programmazione</div>
             <div class="t2">11 LUGLIO 2026<br>Ore 17:00</div>
@@ -69,17 +67,16 @@
           <img src="assets/MRMRS.jpg" alt="Mr. & Mrs. Calderale">
         </div>
 
-        <!-- invece di andare su pagina separata, scrolla a Conferma -->
         <a class="cta" href="#conferma">CONFERMA QUI</a>
         <div class="rsvp">R.S.V.P. entro 11 maggio</div>
       </main>
     </section>
 
-    <!-- ========== CONFERMA ========== -->
+    <!-- CONFERMA -->
     <section class="section" id="conferma">
       <header class="header">
         <div class="header-inner">
-          <button class="icon-btn menu-open" id="menuOpen2" aria-label="Apri menu" onclick="document.getElementById('menuOpen').click()">
+          <button class="icon-btn menu-open" aria-label="Apri menu" onclick="document.getElementById('menuOpen').click()">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
             </svg>
@@ -113,11 +110,11 @@
       </main>
     </section>
 
-    <!-- ========== GIFT ========== -->
+    <!-- GIFT -->
     <section class="section" id="gift">
       <header class="header">
         <div class="header-inner">
-          <button class="icon-btn menu-open" id="menuOpen3" aria-label="Apri menu" onclick="document.getElementById('menuOpen').click()">
+          <button class="icon-btn menu-open" aria-label="Apri menu" onclick="document.getElementById('menuOpen').click()">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
             </svg>
@@ -142,11 +139,10 @@
 
       <main class="main">
         <section class="gift-box" aria-label="Viaggio di nozze">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M6 34l52-18-13 18 13 18-52-18Z" stroke="white" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M25 28l-8-10" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            <path d="M25 40l-8 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            <path d="M36 32h14" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <!-- airplane FIXED: icon pulita e simmetrica -->
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M22 2 11 13" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M22 2 15 22l-4-9-9-4L22 2Z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
           </svg>
           <div class="gift-title">Viaggio di nozze</div>
         </section>
@@ -156,7 +152,7 @@
         </section>
 
         <div class="gift-text">Lorenzo Calderale &amp; Martina Barbino</div>
-        <div class="gift-iban">IT54J0366901600127992381728</div>
+        <div class="iban-pill">IT54J03669016001279923881728</div>
       </main>
     </section>
 
