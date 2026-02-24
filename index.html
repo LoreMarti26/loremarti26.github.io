@@ -91,7 +91,7 @@
               <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
               <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
               <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26c-7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
               <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
             </svg>
             <div class="gift-text">Gift</div>
@@ -162,34 +162,46 @@
 
   </div>
 
-  <!-- PROGRESS BAR -->
-  <nav class="progress" aria-label="Navigazione sezioni">
-    <a class="dot" href="#home" aria-label="Vai a Home"></a>
-    <a class="dot" href="#conferma" aria-label="Vai a Conferma"></a>
-    <a class="dot" href="#gift" aria-label="Vai a Gift"></a>
-  </nav>
+  <!-- iPhone-like scroll indicator -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-track">
+      <div class="scroll-thumb" id="scrollThumb"></div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 
   <script>
     (function () {
-      const root = document.querySelector(".snap");
-      const sections = ["home", "conferma", "gift"].map(id => document.getElementById(id));
-      const dots = Array.from(document.querySelectorAll(".progress .dot"));
+      const scroller = document.querySelector(".snap");
+      const track = document.querySelector(".scroll-track");
+      const thumb = document.getElementById("scrollThumb");
 
-      function setActive(id) {
-        dots.forEach((d, i) => d.classList.toggle("active", sections[i].id === id));
+      if (!scroller || !track || !thumb) return;
+
+      function update() {
+        const max = scroller.scrollHeight - scroller.clientHeight;
+        const ratio = max > 0 ? (scroller.scrollTop / max) : 0;
+
+        const trackH = track.clientHeight;
+        const visibleRatio = scroller.scrollHeight > 0 ? (scroller.clientHeight / scroller.scrollHeight) : 1;
+
+        const minThumb = 22;
+        const thumbH = Math.max(minThumb, Math.round(trackH * visibleRatio));
+        const top = Math.round((trackH - thumbH) * ratio);
+
+        thumb.style.height = thumbH + "px";
+        thumb.style.transform = "translateY(" + top + "px)";
       }
 
-      const observer = new IntersectionObserver((entries) => {
-        const best = entries
-          .filter(e => e.isIntersecting)
-          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (best) setActive(best.target.id);
-      }, { root, threshold: [0.55] });
+      scroller.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
 
-      sections.forEach(s => observer.observe(s));
-      setActive("home");
+      // aggiorna anche quando Tally cambia altezza
+      const ro = new ResizeObserver(update);
+      ro.observe(scroller);
+
+      update();
     })();
   </script>
 
