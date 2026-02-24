@@ -10,6 +10,9 @@
 
   --padX: clamp(12px, 2.2vw, 22px);
   --padY: clamp(10px, 1.8vw, 16px);
+
+  /* width “utili” in stile PDF */
+  --cardW: min(620px, 92%);
 }
 
 *{ box-sizing:border-box; }
@@ -19,7 +22,7 @@ html{ scroll-behavior:smooth; }
 body{
   margin:0;
   font-family:"Noto Serif", Georgia, "Times New Roman", serif;
-  font-weight: 400; /* <<< base più light */
+  font-weight: 400;
   background: var(--white);
   color: var(--black);
 }
@@ -81,7 +84,7 @@ body{
   gap: 4px;
   text-decoration:none;
   color: var(--white);
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
 }
 .gift-link svg{
   width: clamp(30px, 4.6vw, 50px);
@@ -92,18 +95,18 @@ body{
   line-height:1;
 }
 
-/* titolo centrato, più light */
+/* titolo centrato */
 .title{
   text-align:center;
   line-height:1.06;
 }
 .title .t1{
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
   font-size: clamp(24px, 4.2vw, 42px);
 }
 .title .t2{
   margin-top: clamp(4px, .8vw, 8px);
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
   font-size: clamp(16px, 2.8vw, 26px);
 }
 
@@ -135,7 +138,7 @@ body{
   font-size: 20px;
   text-decoration:none;
   color: var(--white);
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
 }
 
 /* main */
@@ -143,45 +146,50 @@ body{
   flex:1;
   display:flex;
   flex-direction:column;
-  gap: 14px;
-  padding: 16px var(--padX);
+  gap: 12px;                /* <<< un pelo più tight per far crescere l’immagine */
+  padding: 14px var(--padX);/* <<< leggermente meno padding verticale */
   min-height:0;
 }
 
-/* location pill */
+/* ===== HOME: location pill (più simile al PDF) ===== */
 .where-link{
   display:block;
+  width: var(--cardW);                 /* <<< stessa larghezza del poster */
+  margin: 0 auto;
   background: var(--blue);
-  border: var(--border) solid var(--black);
-  border-radius: var(--radius);
-  padding: 12px 14px;
+  border: 5px solid var(--black);      /* <<< leggermente meno spesso */
+  border-radius: 32px;                 /* <<< meno arrotondata */
+  padding: 10px 18px;                  /* <<< più bassa */
   text-align:center;
   text-decoration:none;
   color: var(--white);
 }
+
 .where-pin{
   display:flex;
   justify-content:center;
-  margin-bottom: 6px;
-}
-.where-pin svg{
-  width: 28px;
-  height: 28px;
-}
-.where-name{
-  font-size: clamp(18px, 2.9vw, 30px);
-  font-weight: 500; /* <<< 600 -> 500 */
-  text-decoration: underline;
   margin-bottom: 4px;
 }
-.where-addr{
-  font-size: clamp(15px, 2.5vw, 26px);
-  font-weight: 400; /* <<< 500 -> 400 */
-  text-decoration: underline;
-  line-height:1.15;
+.where-pin svg{
+  width: 24px;
+  height: 24px;
 }
 
-/* home image only */
+.where-name{
+  font-size: clamp(18px, 2.6vw, 28px);
+  font-weight: 500;
+  text-decoration: underline;
+  margin-bottom: 2px;
+}
+
+.where-addr{
+  font-size: clamp(15px, 2.3vw, 24px);
+  font-weight: 400;
+  text-decoration: underline;
+  line-height:1.12;
+}
+
+/* ===== HOME: poster (stessa larghezza della pill) ===== */
 .poster{
   flex: 1;
   min-height: 0;
@@ -189,6 +197,8 @@ body{
   align-items:center;
   justify-content:center;
   background:#fff;
+  width: var(--cardW);
+  margin: 0 auto;
 }
 .poster img{
   width:100%;
@@ -207,13 +217,13 @@ body{
   border-radius: 22px;
   padding: 14px 18px;
   text-align:center;
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
   font-size: clamp(18px, 3.2vw, 30px);
   text-decoration: underline;
 }
 .rsvp{
   text-align:center;
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
   font-size: clamp(14px, 2.3vw, 22px);
 }
 
@@ -235,7 +245,7 @@ body{
 }
 .gift-box .gift-title{
   font-size: clamp(18px, 2.9vw, 30px);
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
 }
 
 /* japan card with caption inside */
@@ -264,7 +274,7 @@ body{
   padding: 6px 14px 12px;
   text-align:center;
   font-size: clamp(16px, 2.4vw, 24px);
-  font-weight: 400; /* <<< 500 -> 400 */
+  font-weight: 400;
   color: var(--black);
   background: #ffffff;
   line-height: 1.25;
@@ -274,7 +284,7 @@ body{
 .gift-text{
   text-align:center;
   font-size: clamp(14px, 2.2vw, 22px);
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
   line-height:1.2;
 }
 
@@ -287,6 +297,6 @@ body{
   padding: 12px 16px;
   text-align:center;
   color: var(--white);
-  font-weight: 500; /* <<< 600 -> 500 */
+  font-weight: 500;
   font-size: clamp(14px, 2.2vw, 20px);
 }
