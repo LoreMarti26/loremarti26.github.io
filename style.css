@@ -8,14 +8,13 @@
   --padX: clamp(10px, 2vw, 18px);
   --padY: clamp(10px, 1.8vw, 16px);
 
-  /* per poster + card JAPAN */
   --cardW: min(740px, 96%);
 
-  /* SHAPE UNIFICATA PILL */
+  /* pill con outline (location + viaggio) */
   --pillRadius: 28px;
 
-  /* PROPORZIONI PILL UNIFICATE (altezza) */
-  --pillPadY: 6px; /* << tutte uguali a viaggio di nozze/location */
+  /* CTA + IBAN: rettangolo arrotondato (come PDF) */
+  --ctaRadius: 18px;
 }
 
 *{ box-sizing:border-box; }
@@ -163,45 +162,36 @@ body{
   margin-right: auto;
 }
 
-/* ====== PILL: tutte a misura di testo + STESSA PROPORZIONE ====== */
+/* ====== PILL a misura testo ====== */
 .where-link,
-.gift-box,
-.cta,
-.iban-pill{
+.gift-box{
   display: inline-block;
   align-self: center;
   max-width: calc(100% - 24px);
   border-radius: var(--pillRadius);
-  line-height: 1; /* << evita differenze di altezza percepita */
 }
 
-/* LOCATION PILL (outline nero 2px) */
+/* LOCATION (outline 2px) */
 .where-link{
   background: var(--blue);
   border: 2px solid var(--black);
-  padding: var(--pillPadY) 14px; /* << stesso padY per tutte */
+  padding: 6px 14px;
   text-align:center;
   text-decoration:none;
   color: var(--white);
 }
-
 .where-pin{
   display:flex;
   justify-content:center;
   margin-bottom: 2px;
 }
-.where-pin svg{
-  width: 22px;
-  height: 22px;
-}
-
+.where-pin svg{ width: 22px; height: 22px; }
 .where-name{
   font-size: clamp(18px, 2.5vw, 28px);
   font-weight: 400;
   text-decoration: underline;
   margin-bottom: 0;
 }
-
 .where-addr{
   font-size: clamp(15px, 2.2vw, 23px);
   font-weight: 400;
@@ -225,14 +215,22 @@ body{
   display:block;
 }
 
-/* CTA pill (stessa proporzione: solo padY uguale) */
+/* ===== CTA (come PDF: rettangolo arrotondato, NON capsula) ===== */
 .cta{
+  display:block;                 /* resta link cliccabile */
+  align-self:center;
+  max-width: calc(100% - 24px);
+
   background: var(--blue);
   color: var(--white);
-  padding: var(--pillPadY) 26px; /* << era 10px, ora uguale */
+
+  border-radius: var(--ctaRadius);
+  padding: 16px 34px;            /* più “pieno” come PDF */
+  line-height: 1;
   text-align:center;
+
   font-weight: 400;
-  font-size: clamp(18px, 3vw, 28px);
+  font-size: clamp(22px, 3.6vw, 40px); /* più vicino al PDF */
   text-decoration: underline;
 }
 
@@ -242,11 +240,11 @@ body{
   font-size: clamp(14px, 2.2vw, 20px);
 }
 
-/* GIFT pill (outline nero 2px) */
+/* GIFT pill (outline 2px) */
 .gift-box{
   background: var(--blue);
   border: 2px solid var(--black);
-  padding: var(--pillPadY) 14px; /* già uguale */
+  padding: 6px 14px;
   text-align:center;
   color: var(--white);
 }
@@ -302,12 +300,20 @@ body{
   line-height:1.2;
 }
 
-/* IBAN pill (stessa proporzione: padY uguale) */
+/* ===== IBAN (stessa shape della CTA, NON capsula) ===== */
 .iban-pill{
+  display:inline-block;
+  align-self:center;
+  max-width: calc(100% - 24px);
+
   background: var(--blue);
-  padding: var(--pillPadY) 22px; /* << era 10px, ora uguale */
-  text-align:center;
   color: var(--white);
+
+  border-radius: var(--ctaRadius);
+  padding: 14px 24px;
+  line-height: 1;
+  text-align:center;
+
   font-weight: 400;
   font-size: clamp(14px, 2.1vw, 18px);
 }
