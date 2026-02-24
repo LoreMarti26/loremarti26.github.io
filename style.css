@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&display=swap');
 
 :root{
   --blue:#0C66AC;
@@ -19,6 +19,7 @@ html{ scroll-behavior:smooth; }
 body{
   margin:0;
   font-family:"Noto Serif", Georgia, "Times New Roman", serif;
+  font-weight: 400; /* <<< base più light */
   background: var(--white);
   color: var(--black);
 }
@@ -80,7 +81,7 @@ body{
   gap: 4px;
   text-decoration:none;
   color: var(--white);
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
 }
 .gift-link svg{
   width: clamp(30px, 4.6vw, 50px);
@@ -91,18 +92,18 @@ body{
   line-height:1;
 }
 
-/* titolo centrato, meno bold */
+/* titolo centrato, più light */
 .title{
   text-align:center;
   line-height:1.06;
 }
 .title .t1{
-  font-weight: 600; /* meno bold */
-  font-size: clamp(24px, 4.2vw, 42px); /* un pelo più piccolo */
+  font-weight: 500; /* <<< 600 -> 500 */
+  font-size: clamp(24px, 4.2vw, 42px);
 }
 .title .t2{
   margin-top: clamp(4px, .8vw, 8px);
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
   font-size: clamp(16px, 2.8vw, 26px);
 }
 
@@ -134,7 +135,7 @@ body{
   font-size: 20px;
   text-decoration:none;
   color: var(--white);
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
 }
 
 /* main */
@@ -169,13 +170,13 @@ body{
 }
 .where-name{
   font-size: clamp(18px, 2.9vw, 30px);
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
   text-decoration: underline;
   margin-bottom: 4px;
 }
 .where-addr{
   font-size: clamp(15px, 2.5vw, 26px);
-  font-weight: 500; /* meno bold */
+  font-weight: 400; /* <<< 500 -> 400 */
   text-decoration: underline;
   line-height:1.15;
 }
@@ -206,13 +207,13 @@ body{
   border-radius: 22px;
   padding: 14px 18px;
   text-align:center;
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
   font-size: clamp(18px, 3.2vw, 30px);
   text-decoration: underline;
 }
 .rsvp{
   text-align:center;
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
   font-size: clamp(14px, 2.3vw, 22px);
 }
 
@@ -234,7 +235,7 @@ body{
 }
 .gift-box .gift-title{
   font-size: clamp(18px, 2.9vw, 30px);
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
 }
 
 /* japan card with caption inside */
@@ -260,10 +261,10 @@ body{
   display:block;
 }
 .jp-card .jp-caption{
-  padding: 6px 14px 12px; /* già alzato */
+  padding: 6px 14px 12px;
   text-align:center;
   font-size: clamp(16px, 2.4vw, 24px);
-  font-weight: 500; /* meno bold */
+  font-weight: 400; /* <<< 500 -> 400 */
   color: var(--black);
   background: #ffffff;
   line-height: 1.25;
@@ -273,11 +274,11 @@ body{
 .gift-text{
   text-align:center;
   font-size: clamp(14px, 2.2vw, 22px);
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
   line-height:1.2;
 }
 
-/* IBAN pill: blu come header + testo bianco */
+/* IBAN pill */
 .iban-pill{
   width: min(560px, 92%);
   margin: 0 auto;
@@ -286,6 +287,6 @@ body{
   padding: 12px 16px;
   text-align:center;
   color: var(--white);
-  font-weight: 600; /* meno bold */
+  font-weight: 500; /* <<< 600 -> 500 */
   font-size: clamp(14px, 2.2vw, 20px);
 }
