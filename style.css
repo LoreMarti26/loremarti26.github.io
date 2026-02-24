@@ -162,22 +162,29 @@ body{
   margin-right: auto;
 }
 
-/* ====== LOCATION + VIAGGIO: larghe come le immagini ====== */
-.where-link,
+/* ====== VIAGGIO: largo come le immagini ====== */
 .gift-box{
-  display:block;                /* così la width funziona bene */
-  width: var(--cardW);          /* <<< combacia con poster/jp-card */
+  display:block;
+  width: var(--cardW);
   margin-left:auto;
   margin-right:auto;
+  border-radius: var(--pillRadius);
+}
 
+/* ====== LOCATION: width SOLO DI LOCATION (più stretta) ====== */
+.where-link{
+  display:block;
+  width: min(680px, 92%);  /* <<< QUI CAMBIA SOLO LOCATION */
+  margin-left:auto;
+  margin-right:auto;
   border-radius: var(--pillRadius);
 }
 
 /* LOCATION (outline 3px) */
 .where-link{
   background: var(--blue);
-  border: 3px solid var(--black);   /* <<< 2 -> 3 */
-  padding: 6px 7px;                /* altezza invariata */
+  border: 3px solid var(--black);
+  padding: 6px 7px;
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -217,7 +224,7 @@ body{
   display:block;
 }
 
-/* ===== CTA (rettangolo arrotondato, a misura testo) ===== */
+/* CTA */
 .cta{
   display:inline-block;
   align-self:center;
@@ -245,8 +252,8 @@ body{
 /* VIAGGIO DI NOZZE (outline 3px) */
 .gift-box{
   background: var(--blue);
-  border: 3px solid var(--black);  /* <<< 2 -> 3 */
-  padding: 6px 14px;               /* altezza invariata */
+  border: 3px solid var(--black);
+  padding: 6px 14px;
   text-align:center;
   color: var(--white);
 }
@@ -302,7 +309,7 @@ body{
   line-height:1.2;
 }
 
-/* ===== IBAN (rettangolo arrotondato, a misura testo) ===== */
+/* IBAN */
 .iban-pill{
   display:inline-block;
   align-self:center;
