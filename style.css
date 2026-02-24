@@ -146,13 +146,13 @@ body{
   min-height:0;
 }
 
-/* ===== PILLS: ORA MOLTO PIÙ BASSE ===== */
+/* location pill */
 .where-link{
   display:block;
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: 12px 14px;              /* << prima era più alta */
+  padding: 12px 14px;
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -160,20 +160,20 @@ body{
 .where-pin{
   display:flex;
   justify-content:center;
-  margin-bottom: 6px;              /* più stretto */
+  margin-bottom: 6px;
 }
 .where-pin svg{
-  width: 28px;                     /* icona più piccola */
+  width: 28px;
   height: 28px;
 }
 .where-name{
-  font-size: clamp(18px, 2.9vw, 30px);  /* leggermente giù */
+  font-size: clamp(18px, 2.9vw, 30px);
   font-weight:700;
   text-decoration: underline;
   margin-bottom: 4px;
 }
 .where-addr{
-  font-size: clamp(15px, 2.5vw, 26px);  /* leggermente giù */
+  font-size: clamp(15px, 2.5vw, 26px);
   font-weight:600;
   text-decoration: underline;
   line-height:1.15;
@@ -220,21 +220,24 @@ body{
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: 12px 14px;              /* << più bassa */
+  padding: 12px 14px;
   text-align:center;
   color: var(--white);
 }
 .gift-box svg{
-  width: 30px;                     /* << più piccola */
-  height: 30px;
+  width: 34px;
+  height: 34px;
   margin-bottom: 6px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 .gift-box .gift-title{
   font-size: clamp(18px, 2.9vw, 30px);
   font-weight:700;
 }
 
-/* japan card */
+/* japan card: ora contiene immagine + testo dentro */
 .jp-card{
   flex:1;
   min-height:0;
@@ -243,14 +246,30 @@ body{
   overflow:hidden;
   background:#fff;
   display:flex;
+  flex-direction:column;
 }
-.jp-card img{
+.jp-card .jp-img{
+  flex: 1;
+  min-height: 0;
+  display:flex;
+}
+.jp-card .jp-img img{
   width:100%;
   height:100%;
   object-fit: contain;
   display:block;
 }
+.jp-card .jp-caption{
+  padding: 14px 14px;
+  text-align:center;
+  font-size: clamp(16px, 2.4vw, 24px);
+  font-weight: 600;
+  color: var(--black);
+  background: #ffffff;
+  line-height: 1.25;
+}
 
+/* footer text gift */
 .gift-text{
   text-align:center;
   font-size: clamp(14px, 2.2vw, 22px);
