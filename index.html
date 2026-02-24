@@ -54,7 +54,6 @@
            target="_blank" rel="noreferrer"
            aria-label="Apri Google Maps per Le 7 Fonti">
           <div class="where-pin" aria-hidden="true">
-            <!-- NUOVA ICONA MAPS (SVG inline, bianca via CSS) -->
             <svg class="pin-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
               <path d="M16.001 1.072c5.291 0 9.596 4.305 9.596 9.597 0 1.683-0.446 3.341-1.29 4.799l-8.307 14.394-8.308-14.395c-0.843-1.456-1.289-3.115-1.289-4.798 0-5.292 4.305-9.597 9.597-9.597zM16.001 14.4c2.058 0 3.731-1.674 3.731-3.731s-1.674-3.731-3.731-3.731c-2.058 0-3.732 1.674-3.732 3.731s1.674 3.731 3.732 3.731zM16.001 0.006c-5.889 0-10.663 4.775-10.663 10.663 0 1.945 0.523 3.762 1.432 5.332l9.23 15.994 9.23-15.994c0.909-1.57 1.432-3.387 1.432-5.332 0-5.888-4.774-10.663-10.662-10.663v0zM16.001 13.334c-1.472 0-2.666-1.193-2.666-2.665 0-1.471 1.194-2.665 2.666-2.665s2.665 1.194 2.665 2.665c0 1.472-1.193 2.665-2.665 2.665v0z"></path>
             </svg>
@@ -92,7 +91,7 @@
               <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
               <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
               <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c-7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
               <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
             </svg>
             <div class="gift-text">Gift</div>
@@ -163,6 +162,36 @@
 
   </div>
 
+  <!-- PROGRESS BAR -->
+  <nav class="progress" aria-label="Navigazione sezioni">
+    <a class="dot" href="#home" aria-label="Vai a Home"></a>
+    <a class="dot" href="#conferma" aria-label="Vai a Conferma"></a>
+    <a class="dot" href="#gift" aria-label="Vai a Gift"></a>
+  </nav>
+
   <script src="app.js"></script>
+
+  <script>
+    (function () {
+      const root = document.querySelector(".snap");
+      const sections = ["home", "conferma", "gift"].map(id => document.getElementById(id));
+      const dots = Array.from(document.querySelectorAll(".progress .dot"));
+
+      function setActive(id) {
+        dots.forEach((d, i) => d.classList.toggle("active", sections[i].id === id));
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        const best = entries
+          .filter(e => e.isIntersecting)
+          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (best) setActive(best.target.id);
+      }, { root, threshold: [0.55] });
+
+      sections.forEach(s => observer.observe(s));
+      setActive("home");
+    })();
+  </script>
+
 </body>
 </html>
