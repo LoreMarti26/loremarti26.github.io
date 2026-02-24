@@ -157,8 +157,8 @@ body{
 .cta,
 .iban-pill{
   width: var(--cardW);
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 
 /* ====== LOCATION PILL: tolgo padding inutile (lati + sopra) ====== */
