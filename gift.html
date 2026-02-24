@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gift — Lorenzo & Martina</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <header class="header">
+      <div class="header-row">
+        <button class="icon-btn" id="menuOpen" aria-label="Apri menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="title">
+          <div class="t1">Prossimamente</div>
+        </div>
+
+        <a class="gift-link" href="gift.html" aria-label="Sei su Gift">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
+            <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
+            <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
+            <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+            <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+          </svg>
+          <div style="font-size: clamp(28px, 3.8vw, 44px); line-height:1;">Gift</div>
+        </a>
+      </div>
+    </header>
+
+    <!-- MENU -->
+    <div class="menu-overlay" id="menuOverlay">
+      <div class="menu-panel" data-panel="true">
+        <h2 class="menu-title">Menu</h2>
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="conferma.html">Conferma</a>
+          <a href="gift.html">Gift</a>
+        </nav>
+      </div>
+    </div>
+
+    <main class="main">
+      <section class="gift-box" aria-label="Viaggio di nozze">
+        <!-- airplane -->
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M6 34l52-18-13 18 13 18-52-18Z" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M25 28l-8-10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <path d="M25 40l-8 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <path d="M36 32h14" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="gift-title">Viaggio di nozze</div>
+      </section>
+
+      <section class="jp-card" aria-label="Cartolina Giappone">
+        <img src="assets/JAPAN.jpg" alt="JAPAN" />
+      </section>
+
+      <div class="gift-text">Lorenzo Calderale &amp; Martina Barbino</div>
+      <div class="gift-iban">IT54J0366901600127992381728</div>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
