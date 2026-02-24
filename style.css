@@ -13,6 +13,9 @@
 
   /* SHAPE UNIFICATA PILL */
   --pillRadius: 28px;
+
+  /* PROPORZIONI PILL UNIFICATE (altezza) */
+  --pillPadY: 6px; /* << tutte uguali a viaggio di nozze/location */
 }
 
 *{ box-sizing:border-box; }
@@ -160,7 +163,7 @@ body{
   margin-right: auto;
 }
 
-/* ====== PILL: tutte a misura di testo ====== */
+/* ====== PILL: tutte a misura di testo + STESSA PROPORZIONE ====== */
 .where-link,
 .gift-box,
 .cta,
@@ -168,14 +171,15 @@ body{
   display: inline-block;
   align-self: center;
   max-width: calc(100% - 24px);
-  border-radius: var(--pillRadius); /* <<< shape unificata */
+  border-radius: var(--pillRadius);
+  line-height: 1; /* << evita differenze di altezza percepita */
 }
 
 /* LOCATION PILL (outline nero 2px) */
 .where-link{
   background: var(--blue);
   border: 2px solid var(--black);
-  padding: 6px 14px;
+  padding: var(--pillPadY) 14px; /* << stesso padY per tutte */
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -221,11 +225,11 @@ body{
   display:block;
 }
 
-/* CTA pill (ora shape identica) */
+/* CTA pill (stessa proporzione: solo padY uguale) */
 .cta{
   background: var(--blue);
   color: var(--white);
-  padding: 10px 26px;
+  padding: var(--pillPadY) 26px; /* << era 10px, ora uguale */
   text-align:center;
   font-weight: 400;
   font-size: clamp(18px, 3vw, 28px);
@@ -242,7 +246,7 @@ body{
 .gift-box{
   background: var(--blue);
   border: 2px solid var(--black);
-  padding: 6px 14px;
+  padding: var(--pillPadY) 14px; /* già uguale */
   text-align:center;
   color: var(--white);
 }
@@ -298,10 +302,10 @@ body{
   line-height:1.2;
 }
 
-/* IBAN pill (ora shape identica) */
+/* IBAN pill (stessa proporzione: padY uguale) */
 .iban-pill{
   background: var(--blue);
-  padding: 10px 22px;
+  padding: var(--pillPadY) 22px; /* << era 10px, ora uguale */
   text-align:center;
   color: var(--white);
   font-weight: 400;
