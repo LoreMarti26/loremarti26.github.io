@@ -2,7 +2,6 @@
 
 :root{
   --blue:#0C66AC;
-  --blue-dark:#0A5C9B;
   --white:#fff;
   --black:#000;
 
@@ -215,7 +214,7 @@ body{
   font-size: clamp(14px, 2.3vw, 22px);
 }
 
-/* gift pill (più bassa) */
+/* gift pill */
 .gift-box{
   background: var(--blue);
   border: var(--border) solid var(--black);
@@ -224,20 +223,19 @@ body{
   text-align:center;
   color: var(--white);
 }
-.gift-box svg{
-  width: 34px;
+.gift-box .plane-icon{
+  width: 34px;           /* simile al PDF */
   height: 34px;
-  margin-bottom: 6px;
   display:block;
-  margin-left:auto;
-  margin-right:auto;
+  margin: 0 auto 6px;
+  object-fit: contain;
 }
 .gift-box .gift-title{
   font-size: clamp(18px, 2.9vw, 30px);
   font-weight:700;
 }
 
-/* japan card: ora contiene immagine + testo dentro */
+/* japan card with caption inside */
 .jp-card{
   flex:1;
   min-height:0;
@@ -260,7 +258,8 @@ body{
   display:block;
 }
 .jp-card .jp-caption{
-  padding: 14px 14px;
+  /* ALZATO: meno padding sopra, più vicino all'immagine */
+  padding: 6px 14px 12px;
   text-align:center;
   font-size: clamp(16px, 2.4vw, 24px);
   font-weight: 600;
@@ -269,7 +268,7 @@ body{
   line-height: 1.25;
 }
 
-/* footer text gift */
+/* footer gift */
 .gift-text{
   text-align:center;
   font-size: clamp(14px, 2.2vw, 22px);
@@ -277,11 +276,11 @@ body{
   line-height:1.2;
 }
 
-/* iban pill */
+/* IBAN pill: blu come header + testo bianco */
 .iban-pill{
   width: min(560px, 92%);
   margin: 0 auto;
-  background: rgba(10, 92, 155, .35);
+  background: var(--blue);
   border-radius: 22px;
   padding: 12px 16px;
   text-align:center;
