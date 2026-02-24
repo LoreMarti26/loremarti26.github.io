@@ -174,7 +174,7 @@ body{
 /* ====== LOCATION: width SOLO DI LOCATION (più stretta) ====== */
 .where-link{
   display:block;
-  width: min(500px, 70%);  /* <<< QUI CAMBIA SOLO LOCATION */
+  width: min(500px, 72%);  /* <<< QUI CAMBIA SOLO LOCATION */
   margin-left:auto;
   margin-right:auto;
   border-radius: var(--pillRadius);
