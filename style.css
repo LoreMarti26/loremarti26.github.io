@@ -162,20 +162,22 @@ body{
   margin-right: auto;
 }
 
-/* ====== PILL a misura testo ====== */
+/* ====== LOCATION + VIAGGIO: larghe come le immagini ====== */
 .where-link,
 .gift-box{
-  display: inline-block;
-  align-self: center;
-  max-width: calc(100% - 24px);
+  display:block;                /* così la width funziona bene */
+  width: var(--cardW);          /* <<< combacia con poster/jp-card */
+  margin-left:auto;
+  margin-right:auto;
+
   border-radius: var(--pillRadius);
 }
 
-/* LOCATION (outline 2px) */
+/* LOCATION (outline 3px) */
 .where-link{
   background: var(--blue);
-  border: 2px solid var(--black);
-  padding: 6px 14px;
+  border: 3px solid var(--black);   /* <<< 2 -> 3 */
+  padding: 6px 14px;                /* altezza invariata */
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -215,9 +217,9 @@ body{
   display:block;
 }
 
-/* ===== CTA (come PDF: rettangolo arrotondato, NON capsula) ===== */
+/* ===== CTA (rettangolo arrotondato, a misura testo) ===== */
 .cta{
-  display:block;                 /* resta link cliccabile */
+  display:inline-block;
   align-self:center;
   max-width: calc(100% - 24px);
 
@@ -225,12 +227,12 @@ body{
   color: var(--white);
 
   border-radius: var(--ctaRadius);
-  padding: 16px 34px;            /* più “pieno” come PDF */
+  padding: 16px 34px;
   line-height: 1;
   text-align:center;
 
   font-weight: 400;
-  font-size: clamp(22px, 3.6vw, 40px); /* più vicino al PDF */
+  font-size: clamp(22px, 3.6vw, 40px);
   text-decoration: underline;
 }
 
@@ -240,11 +242,11 @@ body{
   font-size: clamp(14px, 2.2vw, 20px);
 }
 
-/* GIFT pill (outline 2px) */
+/* VIAGGIO DI NOZZE (outline 3px) */
 .gift-box{
   background: var(--blue);
-  border: 2px solid var(--black);
-  padding: 6px 14px;
+  border: 3px solid var(--black);  /* <<< 2 -> 3 */
+  padding: 6px 14px;               /* altezza invariata */
   text-align:center;
   color: var(--white);
 }
@@ -300,7 +302,7 @@ body{
   line-height:1.2;
 }
 
-/* ===== IBAN (stessa shape della CTA, NON capsula) ===== */
+/* ===== IBAN (rettangolo arrotondato, a misura testo) ===== */
 .iban-pill{
   display:inline-block;
   align-self:center;
