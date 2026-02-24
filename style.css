@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap');
 
 :root{
-  --blue:#0C66AC;          /* dal PDF */
-  --white:#ffffff;
-  --black:#000000;
+  --blue:#0C66AC;
+  --white:#fff;
+  --black:#000;
 
-  --radius: 56px;         /* arrotondato box location */
-  --border: 6px;          /* bordo nero */
+  --radius: 56px;
+  --border: 6px;
+
+  --padX: clamp(12px, 2.2vw, 22px);
+  --padY: clamp(10px, 1.8vw, 18px);
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
+
+html{ scroll-behavior:smooth; }
 
 body{
   margin:0;
@@ -19,144 +24,152 @@ body{
   color: var(--black);
 }
 
-/* Wrapper pagina (non limita la larghezza) */
-.page{
-  width:100%;
-  min-height:100svh;
+/* ====== Single-page scroll (3 “pagine” snap) ====== */
+.snap{
+  height:100svh;
+  overflow-y:auto;
+  scroll-snap-type: y mandatory;
+}
+
+.section{
+  height:100svh;
+  scroll-snap-align:start;
   background: var(--white);
+  display:flex;
+  flex-direction:column;
 }
 
-/* Contenuto centrato ma responsive */
-.content{
-  width: min(820px, 100%);
-  margin: 0 auto;
-  padding: 0;
-}
-
-/* ===== HEADER (FULL BLEED) ===== */
+/* ====== HEADER full-bleed, più basso, icone agli angoli ====== */
 .header{
-  width:100%;
   background: var(--blue);
   color: var(--white);
-  padding: clamp(18px, 3.6vw, 34px) clamp(14px, 3vw, 26px);
+  padding: var(--padY) var(--padX);
+  position: relative;
 }
 
-.header-row{
-  display:grid;
-  grid-template-columns: minmax(56px, 86px) 1fr minmax(72px, 120px);
+.header-inner{
+  position: relative;
+  min-height: clamp(68px, 10vw, 96px);
+  display:flex;
   align-items:center;
-  gap: 12px;
-  max-width: 980px;         /* tiene il layout “centrato” ma header resta full */
-  margin: 0 auto;
+  justify-content:center;
 }
 
 .icon-btn{
   appearance:none;
   border:0;
   background:transparent;
-  color: var(--white);
-  padding: 10px;
+  color:var(--white);
+  padding: 8px;
   cursor:pointer;
   border-radius: 14px;
-  justify-self:start;
 }
 
 .icon-btn svg{
-  width: clamp(34px, 5vw, 54px);
-  height: clamp(34px, 5vw, 54px);
+  width: clamp(28px, 4.2vw, 44px);
+  height: clamp(28px, 4.2vw, 44px);
 }
 
+.menu-open{
+  position:absolute;
+  left: var(--padX);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gift-link{
+  position:absolute;
+  right: var(--padX);
+  top: 50%;
+  transform: translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 4px;
+  text-decoration:none;
+  color: var(--white);
+  font-weight:700;
+}
+
+.gift-link svg{
+  width: clamp(30px, 4.6vw, 50px);
+  height: clamp(30px, 4.6vw, 50px);
+}
+
+.gift-link .gift-text{
+  font-size: clamp(14px, 2.3vw, 20px);
+  line-height:1;
+}
+
+/* titolo centrato SEMPRE */
 .title{
   text-align:center;
-  line-height: 1.05;
-  padding: 0 6px;
-  /* evita che il testo “spinga fuori” Gift */
-  min-width: 0;
+  line-height:1.05;
 }
 
 .title .t1{
   font-weight:700;
-  font-size: clamp(28px, 5.2vw, 56px);
-  margin-bottom: clamp(6px, 1.1vw, 12px);
+  font-size: clamp(26px, 4.6vw, 44px);
 }
 
 .title .t2{
+  margin-top: clamp(4px, .8vw, 8px);
   font-weight:700;
-  font-size: clamp(18px, 3.2vw, 34px);
+  font-size: clamp(16px, 2.8vw, 26px);
 }
 
-.gift-link{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap: 6px;
-  text-decoration:none;
-  color: var(--white);
-  font-weight:700;
-  justify-self:end;
-}
-
-.gift-link svg{
-  width: clamp(36px, 5.8vw, 64px);
-  height: clamp(36px, 5.8vw, 64px);
-}
-
-.gift-link .gift-text{
-  font-size: clamp(16px, 2.6vw, 26px);
-  line-height: 1;
-}
-
-/* ===== MENU OVERLAY ===== */
+/* ====== MENU overlay: blu + bianco, no "Menu" ====== */
 .menu-overlay{
   position:fixed;
   inset:0;
   background: rgba(0,0,0,.35);
   display:none;
-  z-index:80;
+  z-index:200;
 }
+
 .menu-overlay.open{ display:block; }
 
 .menu-panel{
   width: min(420px, 86vw);
   height: 100%;
-  background: var(--white);
+  background: var(--blue);
   padding: 18px;
-}
-
-.menu-title{
-  margin: 0 0 12px;
-  font-size: 24px;
-  font-weight: 700;
 }
 
 .menu-links{
   display:flex;
   flex-direction:column;
-  gap: 12px;
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .menu-links a{
   padding: 16px 14px;
-  border: 2px solid #e9e9e9;
-  border-radius: 18px;
+  border: 3px solid rgba(255,255,255,.95);
+  border-radius: 22px;
   font-size: 20px;
   text-decoration:none;
-  color: var(--black);
+  color: var(--white);
+  font-weight:700;
 }
 
-/* ===== MAIN ===== */
+/* ====== CONTENT: tutto in una viewport ====== */
 .main{
-  padding: clamp(18px, 3.6vw, 40px) clamp(14px, 3vw, 26px) clamp(24px, 4vw, 46px);
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap: clamp(10px, 1.8vw, 18px);
+  padding: clamp(12px, 2.2vw, 22px) var(--padX);
+  min-height:0; /* important per far “contenere” l’immagine */
 }
 
-/* ===== HOME: LOCATION BOX (tutto cliccabile) ===== */
+/* Box location (tutto cliccabile) */
 .where-link{
   display:block;
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: clamp(18px, 3.6vw, 30px) clamp(14px, 3vw, 22px);
+  padding: clamp(14px, 2.2vw, 22px) clamp(12px, 2vw, 18px);
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -165,105 +178,109 @@ body{
 .where-pin{
   display:flex;
   justify-content:center;
-  margin-bottom: clamp(10px, 2.2vw, 18px);
+  margin-bottom: clamp(6px, 1.2vw, 12px);
 }
+
 .where-pin svg{
-  width: clamp(32px, 5vw, 58px);
-  height: clamp(32px, 5vw, 58px);
+  width: clamp(26px, 4.2vw, 46px);
+  height: clamp(26px, 4.2vw, 46px);
 }
 
 .where-name{
-  font-size: clamp(20px, 3.3vw, 40px);
-  font-weight: 700;
+  font-size: clamp(18px, 3vw, 34px);
+  font-weight:700;
   text-decoration: underline;
-  margin-bottom: clamp(6px, 1.4vw, 10px);
+  margin-bottom: clamp(4px, .9vw, 8px);
 }
 
 .where-addr{
-  font-size: clamp(18px, 3vw, 38px);
-  font-weight: 600;
+  font-size: clamp(16px, 2.6vw, 30px);
+  font-weight:600;
   text-decoration: underline;
-  line-height: 1.15;
+  line-height:1.15;
 }
 
-/* ===== HOME: poster ===== */
+/* Poster: si adatta allo spazio rimanente (fit in viewport) */
 .poster{
-  margin: clamp(14px, 2.6vw, 28px) auto 0;
-  width: 100%;
+  flex: 1;
+  min-height: 0;
   border: 3px solid #8f8f8f;
   box-shadow: 0 0 0 10px #ededed inset;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
 }
+
 .poster img{
   width: 100%;
+  height: 100%;
+  object-fit: contain; /* così non “esplode” in altezza */
   display:block;
 }
 
-/* ===== HOME: CTA ===== */
+/* CTA + RSVP */
 .cta{
   display:block;
   width: min(560px, 92%);
-  margin: clamp(16px, 2.8vw, 28px) auto 10px;
+  margin: 0 auto;
   background: var(--blue);
   color: var(--white);
   border-radius: 22px;
-  padding: 18px 18px;
+  padding: 14px 18px;
   text-align:center;
   font-weight: 700;
-  font-size: clamp(20px, 3.6vw, 38px);
+  font-size: clamp(18px, 3.2vw, 30px);
   text-decoration: underline;
 }
 
 .rsvp{
   text-align:center;
-  font-weight: 700;
-  font-size: clamp(16px, 2.6vw, 28px);
+  font-weight:700;
+  font-size: clamp(14px, 2.3vw, 22px);
 }
 
-/* ===== GIFT: box “Viaggio di nozze” ===== */
+/* ====== Gift section ====== */
 .gift-box{
-  margin: 0 auto clamp(14px, 2.4vw, 26px);
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: clamp(18px, 3.6vw, 34px) clamp(14px, 3vw, 22px);
+  padding: clamp(14px, 2.2vw, 22px) clamp(12px, 2vw, 18px);
   text-align:center;
   color: var(--white);
 }
 
 .gift-box svg{
-  width: clamp(40px, 6vw, 78px);
-  height: clamp(40px, 6vw, 78px);
-  margin-bottom: clamp(8px, 1.8vw, 14px);
+  width: clamp(32px, 4.8vw, 58px);
+  height: clamp(32px, 4.8vw, 58px);
+  margin-bottom: clamp(6px, 1.2vw, 10px);
 }
 
 .gift-box .gift-title{
-  font-size: clamp(22px, 3.8vw, 48px);
-  font-weight: 600;
+  font-size: clamp(18px, 3vw, 34px);
+  font-weight:700;
 }
 
-/* ===== GIFT: card JAPAN ===== */
 .jp-card{
-  margin: 0 auto clamp(14px, 2.2vw, 22px);
-  border: clamp(6px, 1.4vw, 10px) solid #7a7a7a;
+  flex:1;
+  min-height:0;
+  border: clamp(6px, 1.2vw, 10px) solid #7a7a7a;
   border-radius: 18px;
   overflow:hidden;
   background:#fff;
+  display:flex;
 }
+
 .jp-card img{
-  width: 100%;
+  width:100%;
+  height:100%;
+  object-fit: contain;
   display:block;
 }
 
-.gift-text{
+.gift-text, .gift-iban{
   text-align:center;
-  font-size: clamp(16px, 2.4vw, 28px);
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.gift-iban{
-  text-align:center;
-  font-size: clamp(16px, 2.4vw, 28px);
-  font-weight: 600;
-  margin-top: 10px;
+  font-size: clamp(14px, 2.2vw, 22px);
+  font-weight:700;
+  line-height:1.2;
 }
