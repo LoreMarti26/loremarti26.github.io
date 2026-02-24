@@ -4,6 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lorenzo & Martina</title>
+
+  <!-- Open Graph / WhatsApp preview -->
+  <meta property="og:title" content="Lorenzo & Martina — 11 Luglio 2026" />
+  <meta property="og:description" content="Info matrimonio + conferma presenza." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.lorenzoemartina.it/" />
+  <meta property="og:image" content="https://www.lorenzoemartina.it/assets/MRMRS.jpg" />
+
+  <!-- Twitter (anche se non serve per WhatsApp, è utile) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lorenzo & Martina — 11 Luglio 2026" />
+  <meta name="twitter:description" content="Info matrimonio + conferma presenza." />
+  <meta name="twitter:image" content="https://www.lorenzoemartina.it/assets/MRMRS.jpg" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -197,7 +211,6 @@
       scroller.addEventListener("scroll", update, { passive: true });
       window.addEventListener("resize", update);
 
-      // aggiorna anche quando Tally cambia altezza
       const ro = new ResizeObserver(update);
       ro.observe(scroller);
 
