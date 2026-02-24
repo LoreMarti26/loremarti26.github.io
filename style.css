@@ -169,7 +169,7 @@ body{
   border-radius: 28px;
 
   /* IMPORTANT: meno spazio dentro */
-  padding: 6px 6px;  /* <<< prima era troppo */
+  padding: 1px 1px;  /* <<< prima era troppo */
   text-align:center;
   text-decoration:none;
   color: var(--white);
