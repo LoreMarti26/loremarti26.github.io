@@ -171,7 +171,7 @@ body{
   border-radius: var(--pillRadius);
 }
 
-/* ====== LOCATION: width SOLO DI LOCATION (più stretta) ====== */
+/* ====== LOCATION: width SOLO DI LOCATION ====== */
 .where-link{
   display:block;
   width: min(600px, 75%);
@@ -195,7 +195,7 @@ body{
   margin-bottom: 2px;
 }
 
-/* ✅ nuova icona pin (bianca, 22x22 come prima) */
+/* icona pin bianca */
 .where-pin .pin-icon{
   width: 22px;
   height: 22px;
@@ -232,7 +232,7 @@ body{
   display:block;
 }
 
-/* CTA (ora combacia con Location: width min(600px, 75%)) */
+/* CTA (stessa width di Location) */
 .cta{
   display:block;
   width: min(600px, 75%);
@@ -377,13 +377,13 @@ body{
   #conferma .main{ height: calc(100svh - 96px); }
 }
 
+/* wrapper/iframe riempiono il main */
 .tally-wrap{
   flex: none;
   width: var(--cardW);
   margin: 0 auto;
   height: 100%;
 }
-
 .tally-embed{
   width: 100%;
   height: 100%;
@@ -391,38 +391,34 @@ body{
   border: 0;
 }
 
-/* ===== PROGRESS BAR LATERALE (scroll indicator) ===== */
-.progress{
+/* ===== iPhone-like scroll indicator ===== */
+.scroll-indicator{
   position: fixed;
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 150;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px 8px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.22);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  z-index: 180;
+  pointer-events: none; /* non blocca click/scroll */
 }
 
-.progress .dot{
-  width: 10px;
-  height: 10px;
+.scroll-track{
+  width: 4px;
+  height: clamp(140px, 30vh, 240px);
   border-radius: 999px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.9);
-  display:block;
+  background: rgba(0,0,0,.14);                 /* visibile anche su bianco */
+  box-shadow: 0 0 0 1px rgba(255,255,255,.45);  /* stacco leggero */
+  overflow: hidden;
 }
 
-.progress .dot.active{
-  background: rgba(255,255,255,1);
-  transform: scale(1.2);
+.scroll-thumb{
+  width: 100%;
+  height: 28px; /* verrà aggiornato via JS */
+  border-radius: 999px;
+  background: rgba(0,0,0,.38);
+  transform: translateY(0);
 }
 
 @media (max-width: 520px){
-  .progress{ right: 10px; padding: 8px 6px; }
-  .progress .dot{ width: 9px; height: 9px; }
+  .scroll-indicator{ right: 10px; }
+  .scroll-track{ width: 4px; height: clamp(120px, 28vh, 200px); }
 }
