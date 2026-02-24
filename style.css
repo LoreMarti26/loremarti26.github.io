@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap');
 
 :root{
-  /* Blu campionato dal PDF */
-  --blue:#0C66AC;
+  --blue:#0C66AC;          /* dal PDF */
   --white:#ffffff;
   --black:#000000;
 
-  --radius: 56px; /* molto arrotondato come nel mock */
-  --border: 6px;  /* bordo spesso nero come nel mock */
+  --radius: 56px;         /* arrotondato box location */
+  --border: 6px;          /* bordo nero */
 }
 
 *{ box-sizing:border-box; }
@@ -20,26 +19,35 @@ body{
   color: var(--black);
 }
 
-/* Manteniamo l’aspetto “telefono” anche su desktop (identico mock), centrando */
-.shell{
-  width: min(720px, 100%);
-  margin: 0 auto;
-  min-height: 100svh;
+/* Wrapper pagina (non limita la larghezza) */
+.page{
+  width:100%;
+  min-height:100svh;
   background: var(--white);
 }
 
-/* ===== HEADER ===== */
+/* Contenuto centrato ma responsive */
+.content{
+  width: min(820px, 100%);
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ===== HEADER (FULL BLEED) ===== */
 .header{
+  width:100%;
   background: var(--blue);
   color: var(--white);
-  padding: 44px 26px 40px;
+  padding: clamp(18px, 3.6vw, 34px) clamp(14px, 3vw, 26px);
 }
 
 .header-row{
   display:grid;
-  grid-template-columns: 92px 1fr 120px;
-  align-items:start;
-  gap: 10px;
+  grid-template-columns: minmax(56px, 86px) 1fr minmax(72px, 120px);
+  align-items:center;
+  gap: 12px;
+  max-width: 980px;         /* tiene il layout “centrato” ma header resta full */
+  margin: 0 auto;
 }
 
 .icon-btn{
@@ -50,46 +58,53 @@ body{
   padding: 10px;
   cursor:pointer;
   border-radius: 14px;
-  margin-top: 8px;
+  justify-self:start;
 }
 
 .icon-btn svg{
-  width: 58px;
-  height: 58px;
+  width: clamp(34px, 5vw, 54px);
+  height: clamp(34px, 5vw, 54px);
 }
 
 .title{
   text-align:center;
-  line-height:1.08;
-  padding-top: 2px;
+  line-height: 1.05;
+  padding: 0 6px;
+  /* evita che il testo “spinga fuori” Gift */
+  min-width: 0;
 }
 
 .title .t1{
-  font-weight:600;
-  font-size: clamp(44px, 6vw, 70px);
-  margin-bottom: 12px;
+  font-weight:700;
+  font-size: clamp(28px, 5.2vw, 56px);
+  margin-bottom: clamp(6px, 1.1vw, 12px);
 }
 
 .title .t2{
-  font-weight:600;
-  font-size: clamp(26px, 3.8vw, 46px);
+  font-weight:700;
+  font-size: clamp(18px, 3.2vw, 34px);
 }
 
 .gift-link{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
-  gap: 10px;
+  justify-content:center;
+  gap: 6px;
   text-decoration:none;
   color: var(--white);
-  font-weight:600;
-  margin-top: 6px;
+  font-weight:700;
+  justify-self:end;
 }
 
 .gift-link svg{
-  width: 74px;
-  height: 74px;
+  width: clamp(36px, 5.8vw, 64px);
+  height: clamp(36px, 5.8vw, 64px);
+}
+
+.gift-link .gift-text{
+  font-size: clamp(16px, 2.6vw, 26px);
+  line-height: 1;
 }
 
 /* ===== MENU OVERLAY ===== */
@@ -100,7 +115,6 @@ body{
   display:none;
   z-index:80;
 }
-
 .menu-overlay.open{ display:block; }
 
 .menu-panel{
@@ -133,7 +147,7 @@ body{
 
 /* ===== MAIN ===== */
 .main{
-  padding: 44px 26px 44px;
+  padding: clamp(18px, 3.6vw, 40px) clamp(14px, 3vw, 26px) clamp(24px, 4vw, 46px);
 }
 
 /* ===== HOME: LOCATION BOX (tutto cliccabile) ===== */
@@ -142,7 +156,7 @@ body{
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: 30px 20px 28px;
+  padding: clamp(18px, 3.6vw, 30px) clamp(14px, 3vw, 22px);
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -151,23 +165,22 @@ body{
 .where-pin{
   display:flex;
   justify-content:center;
-  margin-bottom: 18px;
+  margin-bottom: clamp(10px, 2.2vw, 18px);
 }
-
 .where-pin svg{
-  width: 58px;
-  height: 58px;
+  width: clamp(32px, 5vw, 58px);
+  height: clamp(32px, 5vw, 58px);
 }
 
 .where-name{
-  font-size: clamp(28px, 3.6vw, 44px);
+  font-size: clamp(20px, 3.3vw, 40px);
   font-weight: 700;
   text-decoration: underline;
-  margin-bottom: 10px;
+  margin-bottom: clamp(6px, 1.4vw, 10px);
 }
 
 .where-addr{
-  font-size: clamp(24px, 3.3vw, 42px);
+  font-size: clamp(18px, 3vw, 38px);
   font-weight: 600;
   text-decoration: underline;
   line-height: 1.15;
@@ -175,12 +188,11 @@ body{
 
 /* ===== HOME: poster ===== */
 .poster{
-  margin: 28px auto 0;
+  margin: clamp(14px, 2.6vw, 28px) auto 0;
   width: 100%;
   border: 3px solid #8f8f8f;
-  box-shadow: 0 0 0 10px #ededed inset; /* cornice chiara */
+  box-shadow: 0 0 0 10px #ededed inset;
 }
-
 .poster img{
   width: 100%;
   display:block;
@@ -190,54 +202,53 @@ body{
 .cta{
   display:block;
   width: min(560px, 92%);
-  margin: 28px auto 10px;
+  margin: clamp(16px, 2.8vw, 28px) auto 10px;
   background: var(--blue);
   color: var(--white);
   border-radius: 22px;
   padding: 18px 18px;
   text-align:center;
-  font-weight: 600;
-  font-size: clamp(28px, 4.2vw, 44px);
+  font-weight: 700;
+  font-size: clamp(20px, 3.6vw, 38px);
   text-decoration: underline;
 }
 
 .rsvp{
   text-align:center;
-  font-weight: 600;
-  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 700;
+  font-size: clamp(16px, 2.6vw, 28px);
 }
 
 /* ===== GIFT: box “Viaggio di nozze” ===== */
 .gift-box{
-  margin: 0 auto 26px;
+  margin: 0 auto clamp(14px, 2.4vw, 26px);
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: 34px 22px 30px;
+  padding: clamp(18px, 3.6vw, 34px) clamp(14px, 3vw, 22px);
   text-align:center;
   color: var(--white);
 }
 
 .gift-box svg{
-  width: 78px;
-  height: 78px;
-  margin-bottom: 14px;
+  width: clamp(40px, 6vw, 78px);
+  height: clamp(40px, 6vw, 78px);
+  margin-bottom: clamp(8px, 1.8vw, 14px);
 }
 
 .gift-box .gift-title{
-  font-size: clamp(30px, 4.4vw, 52px);
-  font-weight: 500;
+  font-size: clamp(22px, 3.8vw, 48px);
+  font-weight: 600;
 }
 
 /* ===== GIFT: card JAPAN ===== */
 .jp-card{
-  margin: 0 auto 22px;
-  border: 10px solid #7a7a7a; /* bordo grigio spesso come nel PDF */
+  margin: 0 auto clamp(14px, 2.2vw, 22px);
+  border: clamp(6px, 1.4vw, 10px) solid #7a7a7a;
   border-radius: 18px;
   overflow:hidden;
   background:#fff;
 }
-
 .jp-card img{
   width: 100%;
   display:block;
@@ -245,23 +256,14 @@ body{
 
 .gift-text{
   text-align:center;
-  font-size: clamp(20px, 3.1vw, 34px);
-  font-weight: 500;
+  font-size: clamp(16px, 2.4vw, 28px);
+  font-weight: 600;
   line-height: 1.25;
 }
 
 .gift-iban{
   text-align:center;
-  font-size: clamp(20px, 3.1vw, 34px);
-  font-weight: 500;
+  font-size: clamp(16px, 2.4vw, 28px);
+  font-weight: 600;
   margin-top: 10px;
-}
-
-/* Mobile fine-tuning */
-@media (max-width: 430px){
-  .header{ padding: 40px 22px 36px; }
-  .header-row{ grid-template-columns: 86px 1fr 110px; }
-  .icon-btn svg{ width: 54px; height: 54px; }
-  .gift-link svg{ width: 68px; height: 68px; }
-  .main{ padding: 40px 22px 40px; }
 }
