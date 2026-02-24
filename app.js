@@ -8,7 +8,6 @@
   }
 
   function closeMenu(e) {
-    // chiude solo se clicchi fuori dal pannello
     if (e && e.target && e.target.dataset && e.target.dataset.panel === "true") return;
     overlay.classList.remove("open");
     document.body.style.overflow = "";
