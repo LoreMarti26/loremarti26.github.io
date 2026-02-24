@@ -177,7 +177,7 @@ body{
 .where-link{
   background: var(--blue);
   border: 3px solid var(--black);   /* <<< 2 -> 3 */
-  padding: 6px 14px;                /* altezza invariata */
+  padding: 6px 7px;                /* altezza invariata */
   text-align:center;
   text-decoration:none;
   color: var(--white);
