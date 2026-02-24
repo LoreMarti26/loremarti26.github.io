@@ -10,6 +10,9 @@
 
   /* per poster + card JAPAN */
   --cardW: min(740px, 96%);
+
+  /* SHAPE UNIFICATA PILL */
+  --pillRadius: 28px;
 }
 
 *{ box-sizing:border-box; }
@@ -157,24 +160,22 @@ body{
   margin-right: auto;
 }
 
-/* ====== PILL: tutte a misura di testo ======
-   (si chiudono subito dopo il contenuto)
-*/
+/* ====== PILL: tutte a misura di testo ====== */
 .where-link,
 .gift-box,
 .cta,
 .iban-pill{
   display: inline-block;
-  align-self: center;                 /* centra nella colonna flex */
-  max-width: calc(100% - 24px);       /* non esce fuori su schermi piccoli */
+  align-self: center;
+  max-width: calc(100% - 24px);
+  border-radius: var(--pillRadius); /* <<< shape unificata */
 }
 
 /* LOCATION PILL (outline nero 2px) */
 .where-link{
   background: var(--blue);
-  border: 2px solid var(--black);     /* <<< da 5 a 2 */
-  border-radius: 28px;
-  padding: 6px 12px;                  /* meno spazio inutile */
+  border: 2px solid var(--black);
+  padding: 6px 14px;
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -220,12 +221,11 @@ body{
   display:block;
 }
 
-/* CTA pill (a misura testo, niente full width) */
+/* CTA pill (ora shape identica) */
 .cta{
   background: var(--blue);
   color: var(--white);
-  border-radius: 22px;
-  padding: 10px 26px;                 /* più laterale per look PDF */
+  padding: 10px 26px;
   text-align:center;
   font-weight: 400;
   font-size: clamp(18px, 3vw, 28px);
@@ -241,8 +241,7 @@ body{
 /* GIFT pill (outline nero 2px) */
 .gift-box{
   background: var(--blue);
-  border: 2px solid var(--black);     /* <<< da 5 a 2 */
-  border-radius: 28px;
+  border: 2px solid var(--black);
   padding: 6px 14px;
   text-align:center;
   color: var(--white);
@@ -299,10 +298,9 @@ body{
   line-height:1.2;
 }
 
-/* IBAN pill (a misura testo) */
+/* IBAN pill (ora shape identica) */
 .iban-pill{
   background: var(--blue);
-  border-radius: 22px;
   padding: 10px 22px;
   text-align:center;
   color: var(--white);
