@@ -2,6 +2,7 @@
 
 :root{
   --blue:#0C66AC;
+  --blue-dark:#0A5C9B;
   --white:#fff;
   --black:#000;
 
@@ -9,12 +10,11 @@
   --border: 6px;
 
   --padX: clamp(12px, 2.2vw, 22px);
-  --padY: clamp(10px, 1.8vw, 18px);
+  --padY: clamp(10px, 1.8vw, 16px);
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
-
 html{ scroll-behavior:smooth; }
 
 body{
@@ -24,7 +24,7 @@ body{
   color: var(--black);
 }
 
-/* ====== Single-page scroll (3 “pagine” snap) ====== */
+/* ====== Single-page snap ====== */
 .snap{
   height:100svh;
   overflow-y:auto;
@@ -39,17 +39,16 @@ body{
   flex-direction:column;
 }
 
-/* ====== HEADER full-bleed, più basso, icone agli angoli ====== */
+/* ====== Header full-bleed ====== */
 .header{
   background: var(--blue);
   color: var(--white);
   padding: var(--padY) var(--padX);
-  position: relative;
 }
 
 .header-inner{
-  position: relative;
-  min-height: clamp(68px, 10vw, 96px);
+  position:relative;
+  min-height: clamp(64px, 9vw, 88px);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -101,7 +100,6 @@ body{
   line-height:1;
 }
 
-/* titolo centrato SEMPRE */
 .title{
   text-align:center;
   line-height:1.05;
@@ -118,7 +116,7 @@ body{
   font-size: clamp(16px, 2.8vw, 26px);
 }
 
-/* ====== MENU overlay: blu + bianco, no "Menu" ====== */
+/* ====== Menu overlay (blu + bianco, no title) ====== */
 .menu-overlay{
   position:fixed;
   inset:0;
@@ -126,7 +124,6 @@ body{
   display:none;
   z-index:200;
 }
-
 .menu-overlay.open{ display:block; }
 
 .menu-panel{
@@ -144,7 +141,7 @@ body{
 }
 
 .menu-links a{
-  padding: 16px 14px;
+  padding: 14px 14px;              /* un filo più piccole */
   border: 3px solid rgba(255,255,255,.95);
   border-radius: 22px;
   font-size: 20px;
@@ -153,23 +150,23 @@ body{
   font-weight:700;
 }
 
-/* ====== CONTENT: tutto in una viewport ====== */
+/* ====== Main (viewport fit) ====== */
 .main{
   flex:1;
   display:flex;
   flex-direction:column;
-  gap: clamp(10px, 1.8vw, 18px);
-  padding: clamp(12px, 2.2vw, 22px) var(--padX);
-  min-height:0; /* important per far “contenere” l’immagine */
+  gap: clamp(10px, 1.8vw, 16px);
+  padding: clamp(12px, 2vw, 20px) var(--padX);
+  min-height:0;
 }
 
-/* Box location (tutto cliccabile) */
+/* ====== Pills smaller ====== */
 .where-link{
   display:block;
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: clamp(14px, 2.2vw, 22px) clamp(12px, 2vw, 18px);
+  padding: clamp(12px, 1.8vw, 18px) clamp(12px, 2vw, 18px); /* più bassa */
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -178,48 +175,44 @@ body{
 .where-pin{
   display:flex;
   justify-content:center;
-  margin-bottom: clamp(6px, 1.2vw, 12px);
+  margin-bottom: clamp(6px, 1.1vw, 10px);
 }
-
 .where-pin svg{
-  width: clamp(26px, 4.2vw, 46px);
-  height: clamp(26px, 4.2vw, 46px);
+  width: clamp(24px, 3.8vw, 40px);
+  height: clamp(24px, 3.8vw, 40px);
 }
 
 .where-name{
-  font-size: clamp(18px, 3vw, 34px);
+  font-size: clamp(18px, 3vw, 32px);
   font-weight:700;
   text-decoration: underline;
-  margin-bottom: clamp(4px, .9vw, 8px);
+  margin-bottom: 6px;
 }
 
 .where-addr{
-  font-size: clamp(16px, 2.6vw, 30px);
+  font-size: clamp(16px, 2.6vw, 28px);
   font-weight:600;
   text-decoration: underline;
   line-height:1.15;
 }
 
-/* Poster: si adatta allo spazio rimanente (fit in viewport) */
+/* ====== HOME image only (no grey frame) ====== */
 .poster{
   flex: 1;
   min-height: 0;
-  border: 3px solid #8f8f8f;
-  box-shadow: 0 0 0 10px #ededed inset;
   display:flex;
   align-items:center;
   justify-content:center;
   background:#fff;
 }
-
 .poster img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* così non “esplode” in altezza */
+  width:100%;
+  height:100%;
+  object-fit: contain;
   display:block;
 }
 
-/* CTA + RSVP */
+/* CTA */
 .cta{
   display:block;
   width: min(560px, 92%);
@@ -240,27 +233,28 @@ body{
   font-size: clamp(14px, 2.3vw, 22px);
 }
 
-/* ====== Gift section ====== */
+/* ====== GIFT pills ====== */
 .gift-box{
   background: var(--blue);
   border: var(--border) solid var(--black);
   border-radius: var(--radius);
-  padding: clamp(14px, 2.2vw, 22px) clamp(12px, 2vw, 18px);
+  padding: clamp(12px, 1.8vw, 18px) clamp(12px, 2vw, 18px); /* più bassa */
   text-align:center;
   color: var(--white);
 }
 
 .gift-box svg{
-  width: clamp(32px, 4.8vw, 58px);
-  height: clamp(32px, 4.8vw, 58px);
-  margin-bottom: clamp(6px, 1.2vw, 10px);
+  width: clamp(26px, 4vw, 46px);
+  height: clamp(26px, 4vw, 46px);
+  margin-bottom: 8px;
 }
 
 .gift-box .gift-title{
-  font-size: clamp(18px, 3vw, 34px);
+  font-size: clamp(18px, 3vw, 32px);
   font-weight:700;
 }
 
+/* Japan card mantiene bordo grigio (come pdf) */
 .jp-card{
   flex:1;
   min-height:0;
@@ -270,7 +264,6 @@ body{
   background:#fff;
   display:flex;
 }
-
 .jp-card img{
   width:100%;
   height:100%;
@@ -278,9 +271,22 @@ body{
   display:block;
 }
 
-.gift-text, .gift-iban{
+.gift-text{
   text-align:center;
   font-size: clamp(14px, 2.2vw, 22px);
   font-weight:700;
   line-height:1.2;
+}
+
+/* IBAN pill (reference) */
+.iban-pill{
+  width: min(560px, 92%);
+  margin: 0 auto;
+  background: rgba(10, 92, 155, .35);
+  border-radius: 22px;
+  padding: 12px 16px;
+  text-align:center;
+  color: var(--white);
+  font-weight:700;
+  font-size: clamp(14px, 2.2vw, 20px);
 }
