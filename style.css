@@ -157,19 +157,19 @@ body{
 .cta,
 .iban-pill{
   width: var(--cardW);
-  margin-left: 1px;
-  margin-right: 1px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ====== LOCATION PILL: tolgo padding inutile (lati + sopra) ====== */
 .where-link{
   display:block;
   background: var(--blue);
-  border: 1px solid var(--black);
-  border-radius: 20px;
+  border: 5px solid var(--black);
+  border-radius: 28px;
 
   /* IMPORTANT: meno spazio dentro */
-  padding: 1px 1px;  /* <<< prima era troppo */
+  padding: 6px 10px;  /* <<< prima era troppo */
   text-align:center;
   text-decoration:none;
   color: var(--white);
