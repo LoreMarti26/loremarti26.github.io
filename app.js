@@ -16,12 +16,7 @@
   if (openBtn && overlay) {
     openBtn.addEventListener("click", openMenu);
     overlay.addEventListener("click", closeMenu);
-
-    // chiudi quando clicchi un link nel menu
-    overlay.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => closeMenu());
-    });
-
+    overlay.querySelectorAll("a").forEach(a => a.addEventListener("click", () => closeMenu()));
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && overlay.classList.contains("open")) closeMenu();
     });
