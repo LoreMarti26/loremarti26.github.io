@@ -3,51 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Lorenzo & Martina</title>
+  <title>Lorenzo & Martina</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="page">
 
-    <header class="header">
-      <div class="header-row">
-        <button class="icon-btn" id="menuOpen" aria-label="Apri menu">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
-          </svg>
-        </button>
-
-        <div class="title">
-          <div class="t1">In programmazione</div>
-          <div class="t2">11 LUGLIO 2026<br/>Ore 17:00</div>
-        </div>
-
-        <a class="gift-link" href="gift.html" aria-label="Vai a Gift">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
-            <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
-            <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
-            <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
-            <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
-          </svg>
-          <div class="gift-text">Gift</div>
-        </a>
-      </div>
-    </header>
-
-    <!-- MENU -->
-    <div class="menu-overlay" id="menuOverlay">
-      <div class="menu-panel" data-panel="true">
-        <h2 class="menu-title">Menu</h2>
-        <nav class="menu-links">
-          <a href="index.html">Home</a>
-          <a href="conferma.html">Conferma</a>
-          <a href="gift.html">Gift</a>
-        </nav>
-      </div>
+  <!-- MENU (globale) -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-panel" data-panel="true">
+      <nav class="menu-links">
+        <a href="#home">Home</a>
+        <a href="#conferma">Conferma</a>
+        <a href="#gift">Gift</a>
+      </nav>
     </div>
+  </div>
 
-    <div class="content">
+  <div class="snap">
+
+    <!-- ========== HOME ========== -->
+    <section class="section" id="home">
+      <header class="header">
+        <div class="header-inner">
+          <button class="icon-btn menu-open" id="menuOpen" aria-label="Apri menu">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <!-- come nel mock: In / programmazione -->
+          <div class="title">
+            <div class="t1">In<br>programmazione</div>
+            <div class="t2">11 LUGLIO 2026<br>Ore 17:00</div>
+          </div>
+
+          <a class="gift-link" href="#gift" aria-label="Vai a Gift">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+            </svg>
+            <div class="gift-text">Gift</div>
+          </a>
+        </div>
+      </header>
+
       <main class="main">
         <a class="where-link"
            href="https://www.google.com/maps/search/?api=1&query=Le%207%20Fonti%20Via%20del%20Prato%20della%20Corte%20275%20Roma"
@@ -64,13 +66,99 @@
         </a>
 
         <div class="poster">
-          <img src="assets/MRMRS.jpg" alt="Mr. & Mrs. Calderale" />
+          <img src="assets/MRMRS.jpg" alt="Mr. & Mrs. Calderale">
         </div>
 
-        <a class="cta" href="conferma.html">CONFERMA QUI</a>
+        <!-- invece di andare su pagina separata, scrolla a Conferma -->
+        <a class="cta" href="#conferma">CONFERMA QUI</a>
         <div class="rsvp">R.S.V.P. entro 11 maggio</div>
       </main>
-    </div>
+    </section>
+
+    <!-- ========== CONFERMA ========== -->
+    <section class="section" id="conferma">
+      <header class="header">
+        <div class="header-inner">
+          <button class="icon-btn menu-open" id="menuOpen2" aria-label="Apri menu" onclick="document.getElementById('menuOpen').click()">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <div class="title">
+            <div class="t1">Conferma</div>
+            <div class="t2">RSVP</div>
+          </div>
+
+          <a class="gift-link" href="#gift" aria-label="Vai a Gift">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+            </svg>
+            <div class="gift-text">Gift</div>
+          </a>
+        </div>
+      </header>
+
+      <main class="main" style="justify-content:center;">
+        <div style="text-align:center; font-weight:800; font-size: clamp(22px, 3.6vw, 34px);">
+          In programmazione
+        </div>
+        <div style="text-align:center; opacity:.8; font-weight:700; font-size: clamp(14px, 2.2vw, 18px);">
+          Qui embeddaremo il Typeform.
+        </div>
+      </main>
+    </section>
+
+    <!-- ========== GIFT ========== -->
+    <section class="section" id="gift">
+      <header class="header">
+        <div class="header-inner">
+          <button class="icon-btn menu-open" id="menuOpen3" aria-label="Apri menu" onclick="document.getElementById('menuOpen').click()">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+
+          <div class="title">
+            <div class="t1">Prossimamente</div>
+          </div>
+
+          <a class="gift-link" href="#gift" aria-label="Sei su Gift">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+              <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
+            </svg>
+            <div class="gift-text">Gift</div>
+          </a>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="gift-box" aria-label="Viaggio di nozze">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M6 34l52-18-13 18 13 18-52-18Z" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M25 28l-8-10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <path d="M25 40l-8 10" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <path d="M36 32h14" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div class="gift-title">Viaggio di nozze</div>
+        </section>
+
+        <section class="jp-card" aria-label="Cartolina Giappone">
+          <img src="assets/JAPAN.png" alt="JAPAN">
+        </section>
+
+        <div class="gift-text">Lorenzo Calderale &amp; Martina Barbino</div>
+        <div class="gift-iban">IT54J0366901600127992381728</div>
+      </main>
+    </section>
 
   </div>
 
