@@ -8,7 +8,7 @@
   --padX: clamp(10px, 2vw, 18px);
   --padY: clamp(10px, 1.8vw, 16px);
 
-  /* più largo, per far combaciare meglio pill e foto */
+  /* per poster + card JAPAN */
   --cardW: min(740px, 96%);
 }
 
@@ -138,38 +138,43 @@ body{
   font-weight: 400;
 }
 
-/* main — riduco lo “spazio inutile” così la foto cresce */
+/* main */
 .main{
   flex:1;
   display:flex;
   flex-direction:column;
-  gap: 8px;                 /* <<< meno gap */
-  padding: 10px var(--padX);/* <<< meno padding */
+  gap: 8px;
+  padding: 10px var(--padX);
   min-height:0;
 }
 
-/* ====== LARGHEZZA UNICA PER TUTTE LE PILL/BOX PRINCIPALI ====== */
-.where-link,
+/* ====== ELEMENTI LARGHI (NON PILL) ====== */
 .poster,
-.gift-box,
 .jp-card,
-.gift-text,
-.cta,
-.iban-pill{
+.gift-text{
   width: var(--cardW);
   margin-left: auto;
   margin-right: auto;
 }
 
-/* ====== LOCATION PILL: tolgo padding inutile (lati + sopra) ====== */
-.where-link{
-  display:block;
-  background: var(--blue);
-  border: 5px solid var(--black);
-  border-radius: 28px;
+/* ====== PILL: tutte a misura di testo ======
+   (si chiudono subito dopo il contenuto)
+*/
+.where-link,
+.gift-box,
+.cta,
+.iban-pill{
+  display: inline-block;
+  align-self: center;                 /* centra nella colonna flex */
+  max-width: calc(100% - 24px);       /* non esce fuori su schermi piccoli */
+}
 
-  /* IMPORTANT: meno spazio dentro */
-  padding: 6px 10px;  /* <<< prima era troppo */
+/* LOCATION PILL (outline nero 2px) */
+.where-link{
+  background: var(--blue);
+  border: 2px solid var(--black);     /* <<< da 5 a 2 */
+  border-radius: 28px;
+  padding: 6px 12px;                  /* meno spazio inutile */
   text-align:center;
   text-decoration:none;
   color: var(--white);
@@ -199,7 +204,7 @@ body{
   line-height:1.1;
 }
 
-/* ====== POSTER: massimo possibile SENZA TAGLI ====== */
+/* POSTER */
 .poster{
   flex: 1;
   min-height: 0;
@@ -211,19 +216,16 @@ body{
 .poster img{
   width:100%;
   height:100%;
-  object-fit: contain;   /* <<< NO CROP */
+  object-fit: contain;
   display:block;
 }
 
-/* CTA */
+/* CTA pill (a misura testo, niente full width) */
 .cta{
-  display:block;
   background: var(--blue);
   color: var(--white);
   border-radius: 22px;
-
-  /* più compatto per far crescere la foto */
-  padding: 12px 14px;
+  padding: 10px 26px;                 /* più laterale per look PDF */
   text-align:center;
   font-weight: 400;
   font-size: clamp(18px, 3vw, 28px);
@@ -236,12 +238,12 @@ body{
   font-size: clamp(14px, 2.2vw, 20px);
 }
 
-/* GIFT pill (Viaggio di nozze) — stessa logica: meno padding inutile */
+/* GIFT pill (outline nero 2px) */
 .gift-box{
   background: var(--blue);
-  border: 5px solid var(--black);
+  border: 2px solid var(--black);     /* <<< da 5 a 2 */
   border-radius: 28px;
-  padding: 6px 10px;
+  padding: 6px 14px;
   text-align:center;
   color: var(--white);
 }
@@ -280,7 +282,7 @@ body{
   display:block;
 }
 .jp-card .jp-caption{
-  padding: 4px 10px 10px; /* caption più “a filo” */
+  padding: 4px 10px 10px;
   text-align:center;
   font-size: clamp(16px, 2.2vw, 22px);
   font-weight: 400;
@@ -297,11 +299,11 @@ body{
   line-height:1.2;
 }
 
-/* IBAN pill — stessa width, più compatta */
+/* IBAN pill (a misura testo) */
 .iban-pill{
   background: var(--blue);
   border-radius: 22px;
-  padding: 10px 14px;
+  padding: 10px 22px;
   text-align:center;
   color: var(--white);
   font-weight: 400;
