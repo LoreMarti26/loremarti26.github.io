@@ -1,182 +1,424 @@
-<!doctype html>
-<html lang="it">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lorenzo & Martina</title>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&display=swap');
 
-  <!-- Open Graph / WhatsApp preview -->
-  <meta property="og:title" content="Lorenzo & Martina — 11 Luglio 2026" />
-  <meta property="og:description" content="Info matrimonio e viaggio di nozze." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.lorenzoemartina.it/" />
-  <meta property="og:image" content="https://www.lorenzoemartina.it/assets/MRMRS.jpg" />
+:root{
+  --blue:#0C66AC;
+  --white:#fff;
+  --black:#000;
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Lorenzo & Martina — 11 Luglio 2026" />
-  <meta name="twitter:description" content="Info matrimonio e viaggio di nozze." />
-  <meta name="twitter:image" content="https://www.lorenzoemartina.it/assets/MRMRS.jpg" />
+  --padX: clamp(10px, 2vw, 18px);
+  --padY: clamp(10px, 1.8vw, 16px);
 
-  <!-- FAVICON (files in root) -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  --cardW: min(740px, 96%);
 
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  /* pill con outline (location + viaggio) */
+  --pillRadius: 28px;
 
-  <div class="menu-overlay" id="menuOverlay">
-    <div class="menu-panel" data-panel="true">
-      <nav class="menu-links">
-        <a href="#home">Home</a>
-        <a href="#gift">Gift</a>
-      </nav>
-    </div>
-  </div>
+  /* CTA + IBAN: rettangolo arrotondato (come PDF) */
+  --ctaRadius: 18px;
+}
 
-  <div class="snap">
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+html{ scroll-behavior:smooth; }
 
-    <!-- HOME -->
-    <section class="section" id="home">
-      <header class="header">
-        <div class="header-inner">
-          <button class="icon-btn menu-open" id="menuOpen" aria-label="Apri menu">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
-            </svg>
-          </button>
+body{
+  margin:0;
+  font-family:"Noto Serif", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  background: var(--white);
+  color: var(--black);
+}
 
-          <div class="title">
-            <div class="t1">In programmazione</div>
-            <div class="t2">11 LUGLIO 2026<br>Ore 17:00</div>
-          </div>
+/* snap */
+.snap{
+  height:100svh;
+  overflow-y:auto;
+  scroll-snap-type: y mandatory;
+}
+.section{
+  height:100svh;
+  scroll-snap-align:start;
+  background: var(--white);
+  display:flex;
+  flex-direction:column;
+}
 
-          <a class="gift-link" href="#gift" aria-label="Vai a Gift">
-            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-              <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
-              <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
-            </svg>
-            <div class="gift-text">Gift</div>
-          </a>
-        </div>
-      </header>
+/* header */
+.header{
+  background: var(--blue);
+  color: var(--white);
+  padding: var(--padY) var(--padX);
+}
+.header-inner{
+  position:relative;
+  min-height: clamp(64px, 9vw, 88px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.icon-btn{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:var(--white);
+  padding: 8px;
+  cursor:pointer;
+  border-radius: 14px;
+}
+.icon-btn svg{
+  width: clamp(28px, 4.2vw, 44px);
+  height: clamp(28px, 4.2vw, 44px);
+}
+.menu-open{
+  position:absolute;
+  left: var(--padX);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.gift-link{
+  position:absolute;
+  right: var(--padX);
+  top: 50%;
+  transform: translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 4px;
+  text-decoration:none;
+  color: var(--white);
+  font-weight: 400;
+}
+.gift-link svg{
+  width: clamp(30px, 4.6vw, 50px);
+  height: clamp(30px, 4.6vw, 50px);
+}
+.gift-link .gift-text{
+  font-size: clamp(14px, 2.3vw, 20px);
+  line-height:1;
+}
 
-      <main class="main">
-        <a class="where-link"
-           href="https://www.google.com/maps/search/?api=1&query=Le%207%20Fonti%20Via%20del%20Prato%20della%20Corte%20275%20Roma"
-           target="_blank" rel="noreferrer"
-           aria-label="Apri Google Maps per Le 7 Fonti">
-          <div class="where-pin" aria-hidden="true">
-            <svg class="pin-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-              <path d="M16.001 1.072c5.291 0 9.596 4.305 9.596 9.597 0 1.683-0.446 3.341-1.29 4.799l-8.307 14.394-8.308-14.395c-0.843-1.456-1.289-3.115-1.289-4.798 0-5.292 4.305-9.597 9.597-9.597zM16.001 14.4c2.058 0 3.731-1.674 3.731-3.731s-1.674-3.731-3.731-3.731c-2.058 0-3.732 1.674-3.732 3.731s1.674 3.731 3.732 3.731zM16.001 0.006c-5.889 0-10.663 4.775-10.663 10.663 0 1.945 0.523 3.762 1.432 5.332l9.23 15.994 9.23-15.994c0.909-1.57 1.432-3.387 1.432-5.332 0-5.888-4.774-10.663-10.662-10.663v0zM16.001 13.334c-1.472 0-2.666-1.193-2.666-2.665 0-1.471 1.194-2.665 2.666-2.665s2.665 1.194 2.665 2.665c0 1.472-1.193 2.665-2.665 2.665v0z"></path>
-            </svg>
-          </div>
-          <div class="where-name">LE 7 FONTI</div>
-          <div class="where-addr">Via del Prato della Corte, 275, Roma</div>
-        </a>
+/* titolo centrato */
+.title{
+  text-align:center;
+  line-height:1.06;
+}
+.title .t1{
+  font-weight: 400;
+  font-size: clamp(24px, 4.2vw, 42px);
+}
+.title .t2{
+  margin-top: clamp(4px, .8vw, 8px);
+  font-weight: 400;
+  font-size: clamp(16px, 2.8vw, 26px);
+}
 
-        <div class="poster">
-          <img src="assets/MRMRS.jpg" alt="Mr. & Mrs. Calderale">
-        </div>
-      </main>
-    </section>
+/* menu overlay */
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,.35);
+  display:none;
+  z-index:200;
+}
+.menu-overlay.open{ display:block; }
+.menu-panel{
+  width: min(420px, 86vw);
+  height: 100%;
+  background: var(--blue);
+  padding: 18px;
+}
+.menu-links{
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+  margin-top: 10px;
+}
+.menu-links a{
+  padding: 14px 14px;
+  border: 3px solid rgba(255,255,255,.95);
+  border-radius: 22px;
+  font-size: 20px;
+  text-decoration:none;
+  color: var(--white);
+  font-weight: 400;
+}
 
-    <!-- GIFT -->
-    <section class="section" id="gift">
-      <header class="header">
-        <div class="header-inner">
-          <button class="icon-btn menu-open" aria-label="Apri menu" onclick="document.getElementById('menuOpen').click()">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.6" stroke-linecap="round"/>
-            </svg>
-          </button>
+/* main */
+.main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap: 8px;
+  padding: 10px var(--padX);
+  min-height:0;
+}
 
-          <div class="title">
-            <div class="t1">Prossimamente</div>
-          </div>
+/* ====== ELEMENTI LARGHI (NON PILL) ====== */
+.poster,
+.jp-card,
+.gift-text{
+  width: var(--cardW);
+  margin-left: auto;
+  margin-right: auto;
+}
 
-          <a class="gift-link" href="#gift" aria-label="Sei su Gift">
-            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-              <path d="M10 26h44v12H10V26Z" stroke="white" stroke-width="3.5"/>
-              <path d="M14 38v20h36V38" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26v32" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26c-7.5 0-12-3.5-12-8s3-8 7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
-              <path d="M32 26c7.5 0 12-3.5 12-8s-3-8-7.5-8C32 10 32 15 32 26Z" stroke="white" stroke-width="3.5"/>
-            </svg>
-            <div class="gift-text">Gift</div>
-          </a>
-        </div>
-      </header>
+/* ====== VIAGGIO: largo come le immagini ====== */
+.gift-box{
+  display:block;
+  width: var(--cardW);
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: var(--pillRadius);
+}
 
-      <main class="main">
-        <section class="gift-box" aria-label="Viaggio di nozze">
-          <img class="plane-icon" src="assets/plane.png" alt="airplane">
-          <div class="gift-title">Viaggio di nozze</div>
-        </section>
+/* ====== LOCATION: width SOLO DI LOCATION ====== */
+.where-link{
+  display:block;
+  width: min(600px, 75%);
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: var(--pillRadius);
+}
 
-        <section class="jp-card" aria-label="Cartolina Giappone">
-          <div class="jp-img">
-            <img src="assets/JAPAN.png" alt="JAPAN">
-          </div>
-          <div class="jp-caption">
-            Un sogno è in partenza.<br>
-            Se volete farne parte…
-          </div>
-        </section>
+/* LOCATION (outline 3px) */
+.where-link{
+  background: var(--blue);
+  border: 3px solid var(--black);
+  padding: 6px 7px;
+  text-align:center;
+  text-decoration:none;
+  color: var(--white);
+}
+.where-pin{
+  display:flex;
+  justify-content:center;
+  margin-bottom: 2px;
+}
 
-        <div class="gift-text">Lorenzo Calderale &amp; Martina Barbino</div>
-        <div class="iban-pill">IT54J0366901600127992381728</div>
-      </main>
-    </section>
+/* icona pin bianca */
+.where-pin .pin-icon{
+  width: 22px;
+  height: 22px;
+  display:block;
+  fill: #fff;
+}
 
-  </div>
+.where-name{
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 400;
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+.where-addr{
+  font-size: clamp(15px, 2.2vw, 23px);
+  font-weight: 400;
+  text-decoration: underline;
+  line-height:1.1;
+}
 
-  <!-- iPhone-like scroll indicator -->
-  <div class="scroll-indicator" aria-hidden="true">
-    <div class="scroll-track">
-      <div class="scroll-thumb" id="scrollThumb"></div>
-    </div>
-  </div>
+/* POSTER */
+.poster{
+  flex: 1;
+  min-height: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+}
+.poster img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+}
 
-  <script src="app.js"></script>
+/* CTA (stessa width di Location) */
+.cta{
+  display:block;
+  width: min(600px, 75%);
+  margin-left:auto;
+  margin-right:auto;
 
-  <script>
-    (function () {
-      const scroller = document.querySelector(".snap");
-      const track = document.querySelector(".scroll-track");
-      const thumb = document.getElementById("scrollThumb");
+  background: var(--blue);
+  color: var(--white);
 
-      if (!scroller || !track || !thumb) return;
+  border-radius: var(--ctaRadius);
+  padding: 16px 68px;
+  line-height: 1;
+  text-align:center;
 
-      function update() {
-        const max = scroller.scrollHeight - scroller.clientHeight;
-        const ratio = max > 0 ? (scroller.scrollTop / max) : 0;
+  font-weight: 400;
+  font-size: clamp(22px, 3.6vw, 40px);
+  text-decoration: underline;
+}
 
-        const trackH = track.clientHeight;
-        const visibleRatio = scroller.scrollHeight > 0 ? (scroller.clientHeight / scroller.scrollHeight) : 1;
+.rsvp{
+  text-align:center;
+  font-weight: 400;
+  font-size: clamp(14px, 2.2vw, 20px);
+}
 
-        const minThumb = 22;
-        const thumbH = Math.max(minThumb, Math.round(trackH * visibleRatio));
-        const top = Math.round((trackH - thumbH) * ratio);
+/* VIAGGIO DI NOZZE (outline 3px) */
+.gift-box{
+  background: var(--blue);
+  border: 3px solid var(--black);
+  padding: 6px 14px;
+  text-align:center;
+  color: var(--white);
+}
+.gift-box .plane-icon{
+  width: 30px;
+  height: 30px;
+  display:block;
+  margin: 0 auto 4px;
+  object-fit: contain;
+}
+.gift-box .gift-title{
+  font-size: clamp(18px, 2.7vw, 28px);
+  font-weight: 400;
+}
 
-        thumb.style.height = thumbH + "px";
-        thumb.style.transform = "translateY(" + top + "px)";
-      }
+/* JAPAN card */
+.jp-card{
+  flex:1;
+  min-height:0;
+  border: clamp(6px, 1.2vw, 10px) solid #7a7a7a;
+  border-radius: 18px;
+  overflow:hidden;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+}
+.jp-card .jp-img{
+  flex: 1;
+  min-height: 0;
+  display:flex;
+}
+.jp-card .jp-img img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+}
+.jp-card .jp-caption{
+  padding: 4px 10px 10px;
+  text-align:center;
+  font-size: clamp(18px, 2.6vw, 26px);
+  font-weight: 400;
+  color: var(--black);
+  background: #ffffff;
+  line-height: 1.22;
+}
 
-      scroller.addEventListener("scroll", update, { passive: true });
-      window.addEventListener("resize", update);
+/* footer gift */
+.gift-text{
+  text-align:center;
+  font-size: clamp(16px, 2.4vw, 24px);
+  font-weight: 400;
+  line-height:1.2;
+}
 
-      const ro = new ResizeObserver(update);
-      ro.observe(scroller);
+/* IBAN */
+.iban-pill{
+  display:inline-block;
+  align-self:center;
+  max-width: calc(100% - 24px);
 
-      update();
-    })();
-  </script>
+  background: var(--blue);
+  color: var(--white);
 
-</body>
-</html>
+  border-radius: var(--ctaRadius);
+  padding: 14px 24px;
+  line-height: 1;
+  text-align:center;
+
+  font-weight: 400;
+  font-size: clamp(16px, 2.4vw, 22px);
+}
+
+/* ====== TALLY EMBED (Conferma) ====== */
+.tally-wrap{
+  width: var(--cardW);
+  margin-left:auto;
+  margin-right:auto;
+  flex: 1;
+  min-height: 0;
+  display:flex;
+}
+
+.tally-embed{
+  width:100%;
+  height:100%;
+  min-height: 720px;
+  border:0;
+}
+
+/* ===== FIX iOS: header sempre sopra + contenuto scrollabile ===== */
+.section{
+  overflow: hidden;
+}
+
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.main{
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#conferma .main{
+  height: calc(100svh - 88px);
+}
+
+@media (max-width: 520px){
+  #conferma .main{ height: calc(100svh - 96px); }
+}
+
+/* wrapper/iframe riempiono il main */
+.tally-wrap{
+  flex: none;
+  width: var(--cardW);
+  margin: 0 auto;
+  height: 100%;
+}
+.tally-embed{
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border: 0;
+}
+
+/* ===== iPhone-like scroll indicator ===== */
+.scroll-indicator{
+  position: fixed;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 180;
+  pointer-events: none; /* non blocca click/scroll */
+}
+
+.scroll-track{
+  width: 4px;
+  height: clamp(140px, 30vh, 240px);
+  border-radius: 999px;
+  background: rgba(0,0,0,.14);                 /* visibile anche su bianco */
+  box-shadow: 0 0 0 1px rgba(255,255,255,.45);  /* stacco leggero */
+  overflow: hidden;
+}
+
+.scroll-thumb{
+  width: 100%;
+  height: 28px; /* verrà aggiornato via JS */
+  border-radius: 999px;
+  background: rgba(0,0,0,.38);
+  transform: translateY(0);
+}
+
+@media (max-width: 520px){
+  .scroll-indicator{ right: 10px; }
+  .scroll-track{ width: 4px; height: clamp(120px, 28vh, 200px); }
+}
